@@ -11,8 +11,6 @@ import schedule
 # URL of the website to scrape
 url = "https://www.gov.uk/government/statistics/oil-and-oil-products-section-3-energy-trends"
 
-
-
 # create a directory named "downloads"
 directory = "downloads"
 if not os.path.exists(directory):
@@ -78,14 +76,11 @@ def main():
     df = pd.read_excel(file_path, sheet_name="Quarter", index_col=4, header=4)
     
     # Perform basic data profiling and save to a CSV file
-    num_rows, num_cols = df.shape
-    min_per_col = df.min()
-    max_per_col = df.max()
-    mean_per_col = df.mean()
-    median_per_col = df.median()
-    total_missing_values = df.isnull().sum().sum()
-    dict_profilling = {"num_rows": num_rows, "num_cols": num_cols, "min_per_col": min_per_col, \
-                       "max_per_col": max_per_col, "mean_per_col": mean_per_col, "median_per_col": median_per_col, \
+    total_missing_values = df.isnull().sum().sum() 
+
+    dict_profilling = {"num_rows": len(df), "num_cols": len(df.columns), \
+                       "min_per_col": df.min(), "max_per_col": df.max(), \
+                       "mean_per_col": df.mean(), "median_per_col": df.median(), \
                        "total_missing_values": total_missing_values}
     df.fillna("")
     df_profiling = pd.DataFrame(dict_profilling)
@@ -108,12 +103,9 @@ def main():
         print('DataFrame does not contain date type column')
     
     # Create a dictionary to store consistency checks
-    dict_data_consistency = {}
-    dict_data_consistency["new_data"] = check_for_new_data(df)
-    dict_data_consistency["correct_time_format"] = "sorted"
-    dict_data_consistency["num_missing_values"] = total_missing_values
-    dict_data_consistency["new_columns"] = check_for_new_data(df)
-    dict_data_consistency["missing_columns"] = check_for_new_data(df)
+    dict_data_consistency = {"new_data":check_for_new_data(df), "correct_time_format":"sorted", \
+                             "num_missing_values":total_missing_values, "new_columns":check_for_new_data(df), \
+                             "missing_columns":check_for_new_data(df)}
 
     # Create a dataframe to store consistency check results
     df_data_consistency = pd.DataFrame(dict_data_consistency.items())
