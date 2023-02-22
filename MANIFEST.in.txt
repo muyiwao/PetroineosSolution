@@ -1,4 +1,0 @@
-include README.md
-include logs_petrioneous.log
-include *.csv
-

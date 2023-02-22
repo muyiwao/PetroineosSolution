@@ -1,0 +1,8 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+EnergyTrendsDataDownloader.egg-info/PKG-INFO
+EnergyTrendsDataDownloader.egg-info/SOURCES.txt
+EnergyTrendsDataDownloader.egg-info/dependency_links.txt
+EnergyTrendsDataDownloader.egg-info/top_level.txt

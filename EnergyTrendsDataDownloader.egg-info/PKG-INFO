@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: EnergyTrendsDataDownloader
+Version: 1.0.0
+Summary: A demo package to automate the downloading and cleaning trend data from the UK Government's website
+Home-page: https://github.com/muyiwao/PetroineosSolution
+Author: muyiwa
+Author-email: muyirays@gmail.com
+Description-Content-Type: text/x-rst
+License-File: LICENSE
